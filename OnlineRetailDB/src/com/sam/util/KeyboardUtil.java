@@ -1,18 +1,23 @@
 package com.sam.util;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class KeyboardUtil {
 
-	public static int getInt(String message){
-		Scanner scanner= new Scanner();
-		System.out.println(message);
-		String str=scanner.next().trim();
-		return Integer.parseInt(str);
+	public static int getInt(String message) {
+		try {
+			Scanner scanner = new Scanner(System.in);
+			System.out.println(message);
+			return scanner.nextInt();
+		} catch (Exception e) {
+			throw new InputMismatchException();
+		}
 	}
-	public static String getStr(String message){
-		Scanner scanner= new Scanner();
+
+	public static String getStr(String message) {
+		Scanner scanner = new Scanner(System.in);
 		System.out.println(message);
-		return scanner.next().trim();
+		return scanner.nextLine().trim();
 	}
 }
